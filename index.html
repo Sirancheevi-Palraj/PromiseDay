@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirancheevi ❤️ Swetha</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI',sans-serif;
+            background: linear-gradient(135deg,#1e3c72,#2a5298);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Envelope */
+        .envelope {
+            width: 280px;
+            height: 180px;
+            background: #ffffff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: 0.5s;
+            text-align: center;
+            padding: 20px;
+        }
+
+            .envelope:hover {
+                transform: scale(1.05);
+            }
+
+        /* Letter */
+        .letter {
+            position: absolute;
+            width: 90%;
+            max-width: 420px;
+            background: #ffffff;
+            color: #333;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: 0.6s;
+            max-height: 85vh;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+
+        .show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #e91e63;
+        }
+
+        /* Hearts */
+        .heart {
+            position: absolute;
+            animation: float 6s linear infinite;
+            font-size: 20px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+            }
+
+            100% {
+                transform: translateY(-10vh);
+            }
+        }
+
+        @media(max-width:500px) {
+            .letter {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="envelope" onclick="openLetter()">
+        Tap to Open My Promise 💌<br>
+        Sirancheevi ❤️ Swetha
+    </div>
+
+    <div class="letter" id="letter">
+        <h2>Happy Promise Day Swetha ❤️</h2>
+        <p id="text"></p>
+    </div>
+
+    <audio id="bgm" loop>
+        <source src="bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+
+        const paragraphs = [
+
+            `Hi d,
+
+Iniku Promise Day vam.
+Website ready paniten… ana therila enna promise panrathu nu. Blank ah irundhudhu. Apdiye flow la thondratha solren.`,
+
+            `I'm always there for u.
+Maybe ithuku munadiye naraya tym ketirukalam.
+Ana en kitta irundhu kekradhu last ah irukum.
+Ena aanalum… Ena situation vandhalum…
+I stand for u. I'm with u. I always there for u.
+Na promise panren.`,
+
+            `Yematrathin extreme level ah pathavan naan.
+Athoda extreme level pain ah pathavan naan. Neeyum atha pathava. Atha epovume unaku kuduka maten. Na una epovume ethukagavum yarukagavum yematha maten.
+Na unaku promise panren.`,
+
+            `Actual ah un kitta poi soliruken.
+Ana athu elame un kooda konjam irukanum nu dhan.
+Atha thaandi edhum ponathu ila. Enaku oruthar kitta poi solitu guilt ah irukaradhu thangathu.
+So epovume ethukagavum un kitta poi sola maten.
+Na unaku promise panren.`,
+
+            `Ne santhosama happy ah irukaradhu enaku pudikum.
+Na happy ah irundha enaku jolly ah irukuma nu therila…
+But ne happy ah irundha enaku romba jolly ah irukum. Antha santhosathukaga na ena vena panuven.
+At any cost, I will make u happy.
+Ena mulusa kuduthachum una happy ah vachupen.
+Na promise panren.`,
+
+            `Intha ulagathula,
+Enna vida una yaralum pathuka mudiyatha alavuku pathupen.
+Na promise panren.`,
+
+            `Epovume happy ah santhosama irukanum d thangamey.
+Athuku enalam pananumo…
+Athalam na panuven. Na promise panren.
+
+Happy Promise Day d ammu ❤️
+
+With maturity,
+With respect,
+With love,
+Sirancheevi ❣️🫂`
+        ];
+
+        let pIndex = 0;
+        let charIndex = 0;
+
+        function typeParagraph() {
+            if (pIndex < paragraphs.length) {
+                let current = paragraphs[pIndex];
+
+                if (charIndex < current.length) {
+
+                    let char = current.charAt(charIndex);
+
+                    if (char === "\n") {
+                        document.getElementById("text").innerHTML += "<br>";
+                    } else {
+                        document.getElementById("text").innerHTML += char;
+                    }
+
+                    charIndex++;
+                    setTimeout(typeParagraph, 25);
+
+                } else {
+                    document.getElementById("text").innerHTML += "<br><br>";
+                    pIndex++;
+                    charIndex = 0;
+                    setTimeout(typeParagraph, 600);
+                }
+            }
+        }
+
+        function openLetter() {
+            document.querySelector('.envelope').style.display = "none";
+            document.getElementById('letter').classList.add("show");
+
+            const audio = document.getElementById('bgm');
+            audio.volume = 0.5;
+            audio.play();
+
+            typeParagraph();
+            createHearts();
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 30; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "💖";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+                document.body.appendChild(heart);
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>
