@@ -20,8 +20,8 @@
 
         /* Envelope */
         .envelope {
-            width: 280px;
-            height: 180px;
+            width: 260px;
+            height: 160px;
             background: #ffffff;
             color: #333;
             display: flex;
@@ -31,31 +31,27 @@
             cursor: pointer;
             font-weight: bold;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            transition: 0.5s;
+            transition: 0.4s;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
-
-            .envelope:hover {
-                transform: scale(1.05);
-            }
 
         /* Letter */
         .letter {
             position: absolute;
-            width: 90%;
-            max-width: 420px;
+            width: 92%;
+            max-width: 380px;
             background: #ffffff;
             color: #333;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             opacity: 0;
-            transform: scale(0.8);
-            transition: 0.6s;
-            max-height: 85vh;
+            transform: scale(0.9);
+            transition: 0.5s;
+            max-height: 80vh;
             overflow-y: auto;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .show {
@@ -66,13 +62,15 @@
         h2 {
             text-align: center;
             color: #e91e63;
+            margin-top: 0;
         }
 
-        /* Hearts */
+        /* Minimal Hearts */
         .heart {
             position: absolute;
-            animation: float 6s linear infinite;
-            font-size: 20px;
+            animation: float 8s linear infinite;
+            font-size: 16px;
+            opacity: 0.7;
         }
 
         @keyframes float {
@@ -85,9 +83,20 @@
             }
         }
 
+        /* Hide scrollbar visually (optional clean look) */
+        .letter::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .letter::-webkit-scrollbar-thumb {
+            background: #e91e63;
+            border-radius: 10px;
+        }
+
         @media(max-width:500px) {
             .letter {
-                padding: 20px;
+                padding: 18px;
+                max-height: 75vh;
             }
         }
     </style>
@@ -101,7 +110,7 @@
     </div>
 
     <div class="letter" id="letter">
-        <h2>Happy Promise Day ammu ❤️</h2>
+        <h2>Happy Promise Day Swetha ❤️</h2>
         <p id="text"></p>
     </div>
 
@@ -116,28 +125,42 @@
             `Hi d,
 
 Iniku Promise Day vam.
-Website ready paniten… ana therila enna promise panrathu nu. Blank ah irundhudhu. Apdiye flow la thondratha solren.`,
+Website ready paniten… ana therila enna promise panrathu nu.
+Blank ah irundhudhu.
+Apdiye flow la thondratha solren.`,
 
             `I'm always there for u.
 Maybe ithuku munadiye naraya tym ketirukalam.
 Ana en kitta irundhu kekradhu last ah irukum.
-Ena aanalum… Ena situation vandhalum…
-I stand for u. I'm with u. I always there for u.
+
+Ena aanalum…
+Ena situation vandhalum…
+I stand for u.
+I'm with u.
+I always there for u.
 Na promise panren.`,
 
             `Yematrathin extreme level ah pathavan naan.
-Athoda extreme level pain ah pathavan naan. Neeyum atha pathava. Atha epovume unaku kuduka maten. Na una epovume ethukagavum yarukagavum yematha maten.
+Athoda extreme level pain ah pathavan naan.
+Neeyum atha pathava.
+
+Atha epovume unaku kuduka maten.
+Na una epovume ethukagavum yarukagavum yematha maten.
 Na unaku promise panren.`,
 
             `Actual ah un kitta poi soliruken.
 Ana athu elame un kooda konjam irukanum nu dhan.
-Atha thaandi edhum ponathu ila. Enaku oruthar kitta poi solitu guilt ah irukaradhu thangathu.
+Atha thaandi edhum ponathu ila.
+
+Enaku oruthar kitta poi solitu guilt ah irukaradhu thangathu.
 So epovume ethukagavum un kitta poi sola maten.
 Na unaku promise panren.`,
 
             `Ne santhosama happy ah irukaradhu enaku pudikum.
 Na happy ah irundha enaku jolly ah irukuma nu therila…
-But ne happy ah irundha enaku romba jolly ah irukum. Antha santhosathukaga na ena vena panuven.
+But ne happy ah irundha enaku romba jolly ah irukum.
+
+Antha santhosathukaga na ena vena panuven.
 At any cost, I will make u happy.
 Ena mulusa kuduthachum una happy ah vachupen.
 Na promise panren.`,
@@ -148,7 +171,9 @@ Na promise panren.`,
 
             `Epovume happy ah santhosama irukanum d thangamey.
 Athuku enalam pananumo…
-Athalam na panuven. Na promise panren.
+Athalam na panuven.
+
+Na promise panren.
 
 Happy Promise Day d ammu ❤️
 
@@ -200,19 +225,17 @@ Sirancheevi ❣️🫂`
         }
 
         function createHearts() {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 10; i++) {   // Reduced hearts
                 let heart = document.createElement("div");
                 heart.className = "heart";
                 heart.innerHTML = "💖";
                 heart.style.left = Math.random() * 100 + "vw";
-                heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+                heart.style.animationDuration = (Math.random() * 4 + 6) + "s";
                 document.body.appendChild(heart);
             }
         }
 
     </script>
 
-
 </body>
 </html>
-
